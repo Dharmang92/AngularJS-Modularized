@@ -1,0 +1,28 @@
+{
+  "name": "router-test",
+  "private": true,
+  "version": "0.0.1",
+  "description": "AngularJS Modularized",
+  "repository": "",
+  "license": "MIT",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.29",
+    "angular": "^1.7.5",
+    "angular-loader": "^1.7.5",
+    "angular-route": "^1.7.5",
+    "html5-boilerplate": "0.0.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.7.5",
+    "cpx": "^1.5.0",
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "update-deps": "npm update",
+    "postupdate-deps": "npm run copy-libs",
+    "copy-libs": "cpx \"node_modules/{angular,angular-*,html5-boilerplate/dist}/**/*\" app/lib -C",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8080 -c-1 ./app",
+    "update-index-async": "node --eval \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/lib/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=lib/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+  }
+}
